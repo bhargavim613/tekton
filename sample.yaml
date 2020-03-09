@@ -2,7 +2,7 @@ apiVersion: tekton.dev/v1alpha1
 kind: PipelineResource
 metadata:
   name: sampleoutput
-  namespace: default
+  namespace: tekton-pipelines
 spec:
   type: git
   params:
