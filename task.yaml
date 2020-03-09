@@ -1,12 +1,20 @@
 apiVersion: tekton.dev/v1alpha1
 kind: Task
 metadata:
-  name: echo-hello-world
+  name: build-push
 spec:
+  inputs:
+    resources:
+    - name: workspace
+      type: git
+    params:
+    - name: path
+      value: /workspace/tekton/sample.yaml
   steps:
-    - name: echo
-      image: ubuntu
-      command:
-        - echo
-      args:
-        - "Hello World"
+  - name: run-kubectl
+    image: bitnami/kubectl
+    command: ['kubectl']
+    args:
+    - 'apply'
+    - '-f'
+    - '$(inputs.params.path)

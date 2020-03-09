@@ -1,7 +1,7 @@
 apiVersion: tekton.dev/v1alpha1
 kind: TaskRun
 metadata:
-  name: echo-hello-world-task-run
+  name: build-push-run
 spec:
   taskRef:
-    name: echo-hello-world
+    name: build-push
